@@ -1,4 +1,4 @@
-# airline
+# airline 
 A course project for Database System.      
 Main content is simulating a ticket booking system.          
 Use multiple-threads to book tickets at the same time and use transactions to keep data integerity.         
