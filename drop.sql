@@ -1,0 +1,9 @@
+drop table reservation;
+drop table trip;
+drop table payment;
+drop table tickit;
+drop table customer;
+drop table flight;
+drop table plane;
+drop table city; 
+drop table final;

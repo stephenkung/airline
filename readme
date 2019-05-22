@@ -1,0 +1,30 @@
+Liming Gong, #1799174
+
+How to run?
+1)run drop.sql
+2)run create.sql
+3)run insert.sql
+4)run python oltp_airline.py 100 5
+5)run query to get final table: select * from final;
+
+Notice:
+1) total have 5 airplanes
+2) flight_id=plane_id, thus to say each plane is dedicated to one flight.  also tickit.flight_id=final.plane_id
+3) all the booked seats is in table Tickit
+4) total seats are in table Plane
+5) how many business seats are in table Flight
+
+
+Queries to check the final table is correct:
+1)check how many business class sold form table Tickit
+select count(business_class) from tickit where flight_id=1 and business_class=1;   
+2)check total earning from table Tickit
+select sum(tickit_price) from tickit where flight_id=1;
+
+How do I implement locking?
+1) my program starts multiple threads, each thread generates random transaction on "Reservation"&&"Tickit"&&"Customer" 3 tables; 
+   each transaction modify 3 tables;
+2) each thread will generate a query randomly to book a seat, seat_number/seat_class/seat_price are random;
+3) as time goes by, more tickits are sold out and there are more conflicts;
+5) my program can catch each thread's progress, and commit if success or rollback if fail;
+6) my program will show the reason of transaction failure;
